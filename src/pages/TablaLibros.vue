@@ -26,6 +26,12 @@
         </q-card-section>
 
         <q-card-actions align="right">
+          <q-btn
+            flat
+            label="Guardar en NFC"
+            color="primary"
+            @click="writeToNfc"
+          />
           <q-btn flat label="Cerrar" color="primary" v-close-popup />
         </q-card-actions>
       </q-card>
@@ -67,7 +73,12 @@ export default {
       selectedBook.value = row;
       showDialog.value = true;
     };
+    /*******************************/
 
+
+
+
+    /******************************/
     onMounted(fetchBooks);
 
     return {
