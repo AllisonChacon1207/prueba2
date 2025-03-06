@@ -150,6 +150,12 @@ export default defineConfig((/* ctx */) => {
       // extendInjectManifestOptions (cfg) {}
     },
 
+    beforeUnmount() {
+      // Eliminar el listener cuando el componente se destruya
+      window.removeEventListener('beforeinstallprompt', this.handleBeforeInstallPrompt);
+    },
+
+
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/developing-cordova-apps/configuring-cordova
     cordova: {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing

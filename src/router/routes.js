@@ -4,11 +4,11 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') }, // Ruta principal
-      { path: '/MiPWA/src/pages/MiDato.vue', component: () => import('src/pages/MiDato.vue') }, // Ruta para MiPrimero.vue
-      { path: '/MiPWA/src/pages/MiLector.vue', component: () => import('src/pages/MiLector.vue') }, // Ruta para MiSegundo.vue
-      { path: '/MiPWA/src/pages/TablaLibros.vue', component: () => import('src/pages/TablaLibros.vue') }, // Ruta para TablaLibros.vue
+      { path: '/prueba2/src/pages/MiDato.vue', component: () => import('src/pages/MiDato.vue') }, // Ruta para MiPrimero.vue
+      { path: '/prueba2/src/pages/MiLector.vue', component: () => import('src/pages/MiLector.vue') }, // Ruta para MiSegundo.vue
+      { path: '/prueba2/src/pages/TablaLibros.vue', component: () => import('src/pages/TablaLibros.vue') }, // Ruta para TablaLibros.vue
 
-      { path: '/MiPWA/src/pages/prueba1.vue', component: () => import('src/pages/prueba1.vue') }, // Ruta para TablaLibros.vue
+      { path: '/prueba2/src/pages/prueba1.vue', component: () => import('src/pages/prueba1.vue') }, // Ruta para TablaLibros.vue
 
     ],
   },
