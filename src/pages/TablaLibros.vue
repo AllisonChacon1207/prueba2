@@ -1,13 +1,35 @@
 <template>
   <q-page padding>
     <q-table
-      flat bordered
+      flat
+      bordered
       title="Libros del Autor"
       :rows="books"
       :columns="columns"
       row-key="key"
       @row-click="onRowClick"
     />
+
+    <!-- Diálogo para mostrar detalles -->
+    <q-dialog v-model="showDialog" persistent>
+      <q-card style="min-width: 350px">
+        <q-card-section>
+          <div class="text-h6">Detalles del Libro</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          <div v-if="selectedBook">
+            <p><strong>Autor:</strong> {{ selectedBook.author }}</p>
+            <p><strong>Título:</strong> {{ selectedBook.title }}</p>
+            <p><strong>Temas:</strong> {{ selectedBook.subjects }}</p>
+          </div>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Cerrar" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 
 </template>
@@ -19,6 +41,8 @@ import axios from 'axios';
 export default {
   setup() {
     const books = ref([]);
+    const showDialog = ref(false);
+    const selectedBook = ref(null);
 
     const columns = [
       { name: 'author', label: 'Autor', field: 'author', align: 'left' },
@@ -30,7 +54,7 @@ export default {
       try {
         const response = await axios.get('https://openlibrary.org/authors/OL1394244A/works.json?limit=5');
         books.value = response.data.entries.map(entry => ({
-          author: "Cory Doctorow", // Se obtiene del autor de la API
+          author: "Cory Doctorow",
           title: entry.title,
           subjects: entry.subjects ? entry.subjects.join(', ') : 'No disponible'
         }));
@@ -39,10 +63,20 @@ export default {
       }
     };
 
+    const onRowClick = (evt, row) => {
+      selectedBook.value = row;
+      showDialog.value = true;
+    };
 
     onMounted(fetchBooks);
 
-    return { books, columns };
+    return {
+      books,
+      columns,
+      showDialog,
+      selectedBook,
+      onRowClick
+    };
   }
 };
 </script>
