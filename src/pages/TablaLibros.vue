@@ -88,6 +88,31 @@ export default {
       selectedBook,
       onRowClick
     };
+  },
+  data() {
+    return {
+      selectedBook1: {
+        Autor: 'Autor Ejemplo'
+      }
+    };
+  },
+  methods: {
+    async writeToNfc() {
+      try {
+        if (!('NDEFReader' in window)) {
+          alert('Web NFC no es compatible con este navegador.');
+          return;
+        }
+        const ndef = new window.NDEFReader();
+        await ndef.scan();
+        await ndef.write({
+          records: [{ recordType: "text", data: this.selectedBook1.Autor }]
+        });
+        console.log("Escritura en NFC exitosa");
+      } catch (error) {
+        console.error("Error al escribir en NFC:", error);
+      }
+    }
   }
 };
 </script>
