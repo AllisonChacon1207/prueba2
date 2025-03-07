@@ -72,13 +72,9 @@ export default {
     const onRowClick = (evt, row) => {
       selectedBook.value = row;
       showDialog.value = true;
+
     };
-    /*******************************/
 
-
-
-
-    /******************************/
     onMounted(fetchBooks);
 
     return {
@@ -92,7 +88,7 @@ export default {
   data() {
     return {
       selectedBook1: {
-        Autor: 'Autor Ejemplo'
+        Autor: '---->Autor Ejemplo'
       }
     };
   },
