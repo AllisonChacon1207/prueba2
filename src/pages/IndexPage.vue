@@ -38,7 +38,7 @@ const password = ref('')
 const router = useRouter()
 
 function login() {
-  if (username.value === 'Allison Chacon' && password.value === '1234') {
+  if (username.value === 'user' && password.value === '1234') {
     router.push('/proyecto-final/src/pages/R-V.vue') // redirige a la página de inicio
   } else {
     alert('Usuario o contraseña incorrectos')
