@@ -2,14 +2,29 @@ const routes = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
+    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+  },
+  {
+    path: '/main',
+    component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') }, // Ruta principal
-      { path: '/prueba2/src/pages/MiDato.vue', component: () => import('src/pages/MiDato.vue') }, // Ruta para MiPrimero.vue
-      { path: '/prueba2/src/pages/MiLector.vue', component: () => import('src/pages/MiLector.vue') }, // Ruta para MiSegundo.vue
-      { path: '/prueba2/src/pages/TablaLibros.vue', component: () => import('src/pages/TablaLibros.vue') }, // Ruta para TablaLibros.vue
-
+      {
+        path: '/proyecto-final/src/pages/LectorNFC.vue',
+        component: () => import('src/pages/LectorNFC.vue'),
+      }, // Ruta para MiPrimero.vue
+      {
+        path: '/proyecto-final/src/pages/TablaQR.vue',
+        component: () => import('src/pages/TablaQR.vue'),
+      }, // Ruta para MiSegundo.vue
+      {
+        path: '/proyecto-final/src/pages/LibrosAPI.vue',
+        component: () => import('src/pages/LibrosAPI.vue'),
+      }, // Ruta para TablaLibros.vue
+      {
+        path: '/proyecto-final/src/pages/R-V.vue',
+        component: () => import('src/pages/BienvenidaRV.vue'),
+      }, // Ruta de Bienvenida
     ],
-
   },
 
   // Siempre deja esta última ruta para manejar rutas no encontradas (404)
@@ -17,7 +32,6 @@ const routes = [
     path: '/:catchAll(.*)*',
     component: () => import('pages/ErrorNotFound.vue'),
   },
+]
 
-];
-
-export default routes;
+export default routes

@@ -136,8 +136,8 @@ export default defineConfig((/* ctx */) => {
     pwa: {
       workboxMode: 'GenerateSW',
       manifest: {
-        name: 'Mi PWA',
-        short_name: 'PWA',
+        name: 'proyecto-final',
+        short_name: 'proyecto-final',
         description: 'Una aplicación web progresiva',
         display: 'standalone',
         start_url: '/',
