@@ -27,18 +27,8 @@
         </q-card-section>
 
         <q-card-actions align="right">
-          <q-btn
-            flat
-            label="Guardar en NFC"
-            color="primary"
-            @click="writeToNfc"
-          />
-          <q-btn
-            flat
-            label="Cerrar"
-            color="primary"
-            v-close-popup
-          />
+          <q-btn flat label="Guardar en NFC" color="primary" @click="writeToNfc" />
+          <q-btn flat label="Cerrar" color="primary" v-close-popup />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -64,33 +54,33 @@ export default {
         name: 'author',
         label: 'Autor',
         field: 'author',
-        align: 'left'
+        align: 'left',
       },
       {
         name: 'title',
         label: 'Título',
         field: 'title',
-        align: 'left'
+        align: 'left',
       },
       {
         name: 'subjects',
         label: 'Temas',
         field: 'subjects',
-        align: 'left'
-      }
+        align: 'left',
+      },
     ]
 
     // Métodos
     const fetchBooks = async () => {
       try {
         const response = await axios.get(
-          'https://openlibrary.org/authors/OL1394244A/works.json?limit=5'
+          'https://openlibrary.org/authors/OL1394244A/works.json?limit=5',
         )
 
-        books.value = response.data.entries.map(entry => ({
-          author: "Cory Doctorow",
+        books.value = response.data.entries.map((entry) => ({
+          author: 'Cory Doctorow',
           title: entry.title,
-          subjects: entry.subjects ? entry.subjects.join(', ') : 'No disponible'
+          subjects: entry.subjects ? entry.subjects.join(', ') : 'No disponible',
         }))
       } catch (error) {
         console.error('Error al obtener los datos:', error)
@@ -111,15 +101,15 @@ export default {
       columns,
       showDialog,
       selectedBook,
-      onRowClick
+      onRowClick,
     }
   },
 
   data() {
     return {
       selectedBook1: {
-        Autor: '---->Autor Cory Doctorow'
-      }
+        Autor: '---->Autor Cory Doctorow',
+      },
     }
   },
 
@@ -137,23 +127,25 @@ export default {
         // Escanear y escribir
         await ndef.scan()
         await ndef.write({
-          records: [{
-            recordType: "text",
-            data: this.selectedBook1.Autor
-          }]
+          records: [
+            {
+              recordType: 'text',
+              data: this.selectedBook1.Autor,
+            },
+          ],
         })
 
-        console.log("Escritura en NFC exitosa")
-        alert("Datos guardados en NFC correctamente")
+        console.log('Escritura en NFC exitosa')
+        alert('Datos guardados en NFC correctamente')
       } catch (error) {
-        console.error("Error al escribir en NFC:", error)
-        this.showError("Error al guardar en NFC. Intente nuevamente.")
+        console.error('Error al escribir en NFC:', error)
+        this.showError('Error al guardar en NFC. Intente nuevamente.')
       }
     },
 
     showError(message) {
       alert(message)
-    }
-  }
+    },
+  },
 }
 </script>
