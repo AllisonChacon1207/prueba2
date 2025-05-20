@@ -23,7 +23,7 @@
         "
       >
         <q-avatar size="85px" class="q-mb-sm">
-          <img src="@/assets/logo.jpeg" />
+          <img src="/logo.jpeg" alt="Logo" />
         </q-avatar>
         <div class="text-weight-bold">Allison Chacon</div>
         <div>Almacen de Digitalización</div>
