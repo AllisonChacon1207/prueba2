@@ -1,6 +1,13 @@
 <template>
   <q-page class="flex flex-center">
     <div class="q-pa-md" style="width: 100%; max-width: 400px">
+      <div class="text-center q-mb-md">
+        <img
+          alt="Quasar logo"
+          src="https://i.imgur.com/AZVKoPU.png"
+          style="width: 200px; height: 200px"
+        />
+      </div>
       <q-card>
         <q-card-section>
           <div class="text-h6">Inicio de Sesión</div>
