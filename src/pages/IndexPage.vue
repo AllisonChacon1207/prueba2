@@ -3,7 +3,7 @@
     <div class="q-pa-md" style="width: 100%; max-width: 400px">
       <div class="text-center q-mb-md">
         <img
-          alt="Quasar logo"
+          alt="Registro de la propiedad"
           src="https://i.imgur.com/AZVKoPU.png"
           style="width: 200px; height: 200px"
         />
@@ -14,14 +14,21 @@
         </q-card-section>
 
         <q-card-section>
-          <q-input v-model="username" label="Usuario" outlined dense />
+          <q-input
+            v-model="username"
+            label="user"
+            outlined
+            dense
+            :rules="[(val) => !!val || 'Por favor ingrese su usuario']"
+          />
           <q-input
             v-model="password"
-            label="Contraseña"
+            label="1234"
             type="password"
             outlined
             dense
             class="q-mt-sm"
+            :rules="[(val) => !!val || 'Por favor ingrese su contraseña']"
           />
         </q-card-section>
 
@@ -36,16 +43,32 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useQuasar } from 'quasar'
 
+const $q = useQuasar()
 const username = ref('')
 const password = ref('')
 const router = useRouter()
 
 function login() {
+  // Validar campos vacíos primero
+  if (!username.value || !password.value) {
+    $q.notify({
+      type: 'negative',
+      message: 'Por favor ingrese su usuario y contraseña',
+      position: 'top',
+    })
+    return
+  }
+
   if (username.value === 'user' && password.value === '1234') {
-    router.push('/proyecto-final/src/pages/R-V.vue') // redirige a la página de inicio
+    router.push('/proyecto-final/src/pages/R-V.vue')
   } else {
-    alert('Usuario o contraseña incorrectos')
+    $q.notify({
+      type: 'negative',
+      message: 'Usuario o contraseña incorrectos',
+      position: 'top',
+    })
   }
 }
 </script>
