@@ -1,9 +1,6 @@
 <template>
   <q-page class="flex flex-center">
     <div class="q-pa-md" style="width: 100%; max-width: 400px">
-      <div class="text-center q-mb-md">
-        <img src="/logo.jpeg" alt="Logo" />
-      </div>
       <q-card>
         <q-card-section>
           <div class="text-h6">Inicio de Sesión</div>
