@@ -108,7 +108,7 @@ export default {
   data() {
     return {
       selectedBook1: {
-        Autor: '---->Autor Cory Doctorow',
+        Autor: 'Autor Cory Doctorow',
       },
     }
   },
